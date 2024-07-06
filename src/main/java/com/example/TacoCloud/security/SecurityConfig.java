@@ -41,6 +41,7 @@ public class SecurityConfig {
                         .anyRequest().permitAll())
                 .formLogin(login -> login.loginPage("/login").defaultSuccessUrl("/design", true))
                 .logout(logout -> logout.logoutSuccessUrl("/"))
+                .csrf(AbstractHttpConfigurer::disable)
                 .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
         return http.build();
 
